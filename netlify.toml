@@ -2,21 +2,21 @@
 # https://docs.netlify.com/integrations/frameworks/next-js/
 
 [build]
-  command = "npm run build"
+  # Explicit prisma generate before next build (avoids postinstall network issues)
+  command = "npx prisma generate && npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
-  PRISMA_ENGINES_SKIP_DOWNLOAD = "1"
-  PRISMA_SKIP_POSTINSTALL_GENERATE = "1"
+  # Allow Prisma engine binary download on Netlify
+  PRISMA_ENGINES_SKIP_DOWNLOAD = "false"
+  PRISMA_SKIP_POSTINSTALL_GENERATE = "true"
+  NEXT_TELEMETRY_DISABLED = "1"
 
 # Next.js plugin (handles SSR, server actions, image optimization)
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Prisma needs the binary in node_modules
-# Netlify's build process handles this automatically with the Next.js plugin
 
 # Security headers
 [[headers]]
@@ -26,3 +26,4 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
