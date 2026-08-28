@@ -8,6 +8,8 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
+  PRISMA_ENGINES_SKIP_DOWNLOAD = "1"
+  PRISMA_SKIP_POSTINSTALL_GENERATE = "1"
 
 # Next.js plugin (handles SSR, server actions, image optimization)
 [[plugins]]
