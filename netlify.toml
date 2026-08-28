@@ -8,7 +8,9 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps"
+  # Use --ignore-scripts to skip ALL postinstall hooks (prevents prisma generate auto-run)
+  # --legacy-peer-deps for compat
+  NPM_FLAGS = "--ignore-scripts --legacy-peer-deps"
   # Allow Prisma engine binary download on Netlify
   PRISMA_ENGINES_SKIP_DOWNLOAD = "false"
   PRISMA_SKIP_POSTINSTALL_GENERATE = "true"
