@@ -25,5 +25,16 @@
     "baseUrl": "."
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next", "out", "logs-archive", "tests"]
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "logs-archive",
+    "tests",
+    "vitest.config.ts",
+    "tailwind.config.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts"
+  ]
 }
